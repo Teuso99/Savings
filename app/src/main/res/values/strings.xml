@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Savings</string>
+    <string name="tituloCadastro">Novo Gasto</string>
+    <string name="descricaoCadastro">Insira aqui as informações do novo gasto</string>
+    <string name="labelNome">Nome do gasto:</string>
+    <string name="labelValor">Valor:</string>
+    <string name="labelDescricao">Descrição:</string>
+    <string name="btEnviar">Enviar</string>
+    <string name="btSelecionar">Selecionar</string>
+    <string name="labelRecibo">Recibo: </string>
+    <string name="labelCategoria">Categoria:</string>
+    <string name="tituloAlerta">Como deseja obter a imagem?</string>
+    <string-array name="arrayCategorias">
+        <item>Educação</item>
+        <item>Serviços</item>
+        <item>Entretenimento</item>
+        <item>Alimentação</item>
+        <item>Outros</item>
+    </string-array>
+
+</resources>
