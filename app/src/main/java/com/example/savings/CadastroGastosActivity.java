@@ -14,6 +14,8 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,6 +28,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.net.URI;
 
 public class CadastroGastosActivity extends AppCompatActivity
@@ -38,6 +42,7 @@ public class CadastroGastosActivity extends AppCompatActivity
     String itemSpinner;
     Button btEnviar;
     Integer REQUEST_CAMERA = 1, SELECT_FILE = 0;
+    Bitmap thumbnail;
 
     private static final int IMAGE_PICK_CODE = 1001;
     private static final int PERMISSION_CODE = 1000;
@@ -118,11 +123,38 @@ public class CadastroGastosActivity extends AppCompatActivity
 
             if(requestCode==REQUEST_CAMERA)
             {
-                imgRecibo.setImageURI(image_uri);
+                try
+                {
+                    imgRecibo.setImageURI(image_uri);
+
+                    //thumbnail = (Bitmap) data.getExtras().get("data");
+
+                    final InputStream imageStream;
+
+                    imageStream = getContentResolver().openInputStream(image_uri);
+                    final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                }
+                catch (FileNotFoundException e)
+                {
+                    e.printStackTrace();
+                }
+
             }
             else if(requestCode==SELECT_FILE)
             {
-                imgRecibo.setImageURI(data.getData());
+                try
+                {
+                    imgRecibo.setImageURI(data.getData());
+                    final InputStream imageStream;
+
+                    imageStream = getContentResolver().openInputStream(image_uri);
+                    final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                }
+                catch (FileNotFoundException e)
+                {
+                    e.printStackTrace();
+                }
+
             }
 
         }
