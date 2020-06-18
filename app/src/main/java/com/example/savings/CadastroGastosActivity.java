@@ -1,36 +1,23 @@
 package com.example.savings;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.net.URI;
 
 public class CadastroGastosActivity extends AppCompatActivity
 {
@@ -39,11 +26,12 @@ public class CadastroGastosActivity extends AppCompatActivity
     Button btUpload;
     Uri image_uri;
     Spinner spinnerCategorias;
-    String itemSpinner;
+    String categoria;
     Button btEnviar;
     Integer REQUEST_CAMERA = 1, SELECT_FILE = 0;
-    Bitmap thumbnail;
+    EditText nome, descricao, valor;
 
+    private BDSQLiteHelper bd;
     private static final int IMAGE_PICK_CODE = 1001;
     private static final int PERMISSION_CODE = 1000;
     private static final int IMAGE_CAPTURE_CODE = 1001;
@@ -58,16 +46,22 @@ public class CadastroGastosActivity extends AppCompatActivity
         btUpload = (Button) findViewById(R.id.btImagem);
         spinnerCategorias = (Spinner) findViewById(R.id.spinnerCategorias);
         btEnviar = (Button) findViewById(R.id.btEnviar);
+        nome = (EditText) findViewById(R.id.nomeGasto);
+        descricao = (EditText) findViewById(R.id.DescricaoGasto);
+        categoria = null;
+        valor = (EditText) findViewById(R.id.valorGasto);
+        bd = new BDSQLiteHelper(this);
 
+        //region spinner Categorias
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.arrayCategorias, android.R.layout.simple_spinner_item);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinnerCategorias.setAdapter(adapter);
+        //endregion
 
-        //pegar o item do spinner:
-        itemSpinner = spinnerCategorias.getSelectedItem().toString();
 
+        //region upload imagem
         btUpload.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -76,6 +70,31 @@ public class CadastroGastosActivity extends AppCompatActivity
                SelectImage();
             }
         });
+        //endregion
+
+        //region envio formulário
+        btEnviar.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                categoria = spinnerCategorias.getSelectedItem().toString();
+                Gasto gasto = new Gasto();
+
+                gasto.setTitulo(nome.getText().toString());
+                gasto.setDescricao(descricao.getText().toString());
+                gasto.setCategoria(categoria);
+                gasto.setValor(Double.parseDouble(valor.getText().toString()));
+
+                bd.addGasto(gasto);
+
+                Toast.makeText(getBaseContext(), "Gasto cadastrado!", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(CadastroGastosActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        //endregion
 
     }
     
@@ -123,38 +142,11 @@ public class CadastroGastosActivity extends AppCompatActivity
 
             if(requestCode==REQUEST_CAMERA)
             {
-                try
-                {
                     imgRecibo.setImageURI(image_uri);
-
-                    //thumbnail = (Bitmap) data.getExtras().get("data");
-
-                    final InputStream imageStream;
-
-                    imageStream = getContentResolver().openInputStream(image_uri);
-                    final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                }
-                catch (FileNotFoundException e)
-                {
-                    e.printStackTrace();
-                }
-
             }
             else if(requestCode==SELECT_FILE)
             {
-                try
-                {
                     imgRecibo.setImageURI(data.getData());
-                    final InputStream imageStream;
-
-                    imageStream = getContentResolver().openInputStream(image_uri);
-                    final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                }
-                catch (FileNotFoundException e)
-                {
-                    e.printStackTrace();
-                }
-
             }
 
         }

@@ -2,19 +2,21 @@ package com.example.savings;
 
 public class Gasto
 {
+    private int id;
     private String titulo;
     private String descricao;
     private String categoria;
-    private double preco;
+    private double valor;
     //private String img;
 
-    public Gasto(String titulo, String descricao, String categoria, double preco/*, String img*/)
+    public int getId()
     {
-        this.titulo = titulo;
-        this.descricao = descricao;
-        this.categoria = categoria;
-        this.preco = preco;
-        //this.img = img;
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
     }
 
     public String getTitulo()
@@ -47,14 +49,14 @@ public class Gasto
         this.categoria = categoria;
     }
 
-    public double getPreco()
+    public double getValor()
     {
-        return preco;
+        return valor;
     }
 
-    public void setPreco(double preco)
+    public void setValor(double valor)
     {
-        this.preco = preco;
+        this.valor = valor;
     }
 
  /*   public String getImg()

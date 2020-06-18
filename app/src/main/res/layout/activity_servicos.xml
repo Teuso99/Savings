@@ -7,13 +7,11 @@
     tools:context=".ServicosActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/textServicos"
-        android:text="TesteServicos"
-        android:textAlignment="center"
-        android:gravity="center_horizontal"
-        android:paddingTop="100dp"/>
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listaServicos"
+        />
+
 
 </LinearLayout>
