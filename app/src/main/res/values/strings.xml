@@ -10,6 +10,11 @@
     <string name="labelRecibo">Recibo: </string>
     <string name="labelCategoria">Categoria:</string>
     <string name="tituloAlerta">Como deseja obter a imagem?</string>
+    <string name="tituloEditar">Editar Gasto</string>
+    <string name="descricaoEditar">Altere aqui as informações do gasto</string>
+    <string name="tituloExcluir">Deseha realmente excluir o gasto?</string>
+    <string name="alertPositivo">Sim</string>
+    <string name="alertNegativo">Cancelar</string>
     <string-array name="arrayCategorias">
         <item>Educação</item>
         <item>Serviços</item>
