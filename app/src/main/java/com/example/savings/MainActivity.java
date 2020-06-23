@@ -83,19 +83,19 @@ public class MainActivity extends AppCompatActivity
     {
         ArrayList<Categoria> categorias = new ArrayList<Categoria>();
 
-        Categoria c = new Categoria("Educação", "Gastos com educação", R.drawable.educacao_icon);
+        Categoria c = new Categoria("Educação", "Gastos com educação", R.drawable.ic_baseline_book_24);
         categorias.add(c);
 
-        c = new Categoria("Serviços", "Gastos com serviços", R.drawable.servicos_icon);
+        c = new Categoria("Serviços", "Gastos com serviços", R.drawable.ic_baseline_build_24);
         categorias.add(c);
 
-        c = new Categoria("Entretenimento", "Gastos com entretenimento", R.drawable.entretenimento_icon);
+        c = new Categoria("Entretenimento", "Gastos com entretenimento", R.drawable.ic_baseline_golf_course_24);
         categorias.add(c);
 
-        c = new Categoria("Alimentação", "Gastos com alimentação", R.drawable.alimentacao_icon);
+        c = new Categoria("Alimentação", "Gastos com alimentação", R.drawable.ic_baseline_fastfood_24);
         categorias.add(c);
 
-        c = new Categoria("Outros", "Outros gastos que não se enquadram nas categorias acimas", R.drawable.outros_icon);
+        c = new Categoria("Outros", "Outros gastos que não se enquadram nas categorias acimas", R.drawable.ic_baseline_emoji_flags_24);
         categorias.add(c);
 
         return categorias;

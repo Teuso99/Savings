@@ -7,7 +7,7 @@ public class Gasto
     private String descricao;
     private String categoria;
     private double valor;
-    //private String img;
+
 
     public int getId()
     {
@@ -59,13 +59,4 @@ public class Gasto
         this.valor = valor;
     }
 
- /*   public String getImg()
-    {
-        return img;
-    }
-
-    public void setImg(String img)
-    {
-        this.img = img;
-    }*/
 }

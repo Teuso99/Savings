@@ -8,9 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.savings.Categoria;
-import com.example.savings.R;
-
 import java.util.ArrayList;
 
 public class Adapter extends ArrayAdapter<Categoria>

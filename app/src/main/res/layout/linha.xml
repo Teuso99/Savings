@@ -7,7 +7,7 @@
         android:layout_height="80dp"
         android:id="@+id/imagem"
         android:scaleType="fitXY"
-        android:src="@drawable/alimentacao_icon"
+        android:src="@drawable/ic_baseline_fastfood_24"
         android:layout_margin="5dp" />
     <LinearLayout
         android:orientation="vertical"

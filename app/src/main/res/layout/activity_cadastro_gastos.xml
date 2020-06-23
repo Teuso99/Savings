@@ -141,15 +141,6 @@
             android:layout_height="0dp"
             android:layout_weight="0.25" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/LabelRecibo1"
-            android:text="@string/labelRecibo"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_marginRight="50dp"
-            />
-
     </LinearLayout>
 
     <LinearLayout
@@ -176,24 +167,7 @@
             android:layout_weight="0.25"
             />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginRight="10dp"
-            android:text="@string/btSelecionar"
-            android:id="@+id/btImagem"
-            />
-
-    </LinearLayout>
-
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        android:id="@+id/imgRecibo"
-        android:src="@drawable/ic_baseline_image_24"
-        />
+           </LinearLayout>
     
     <Button
         android:layout_width="180dp"
